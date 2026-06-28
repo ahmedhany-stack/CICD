@@ -1,0 +1,12 @@
+name: webhook Workflow
+
+on:
+  repository_dispatch:
+
+jobs:
+  respond-to-dispatch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "run a script"
+        run: echo "responding to repository dispatch event"
