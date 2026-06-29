@@ -12,22 +12,22 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Notice
-        shell: pwsh
+        shell: powershell
         run: |
           Write-Output "::notice::Workflow Started Successfully"
 
       - name: Warning
-        shell: pwsh
+        shell: powershell
         run: |
           Write-Output "::warning::This is just a warning"
 
       - name: Error (Demo Only)
-        shell: pwsh
+        shell: powershell
         run: |
           Write-Output "::error::This is a fake error message"
 
       - name: Group Logs
-        shell: pwsh
+        shell: powershell
         run: |
           Write-Output "::group::Installing Dependencies"
           Write-Output "Installing Python..."
@@ -36,34 +36,34 @@ jobs:
           Write-Output "::endgroup::"
 
       - name: Mask Secret
-        shell: pwsh
+        shell: powershell
         run: |
           Write-Output "::add-mask::Ahmed123456"
           Write-Output "Password = Ahmed123456"
 
       - name: Create Environment Variable
-        shell: pwsh
+        shell: powershell
         run: |
           "USERNAME=Ahmed" >> $env:GITHUB_ENV
 
       - name: Read Environment Variable
-        shell: pwsh
+        shell: powershell
         run: |
           Write-Output "User: $env:USERNAME"
 
       - name: Create Output
         id: my_step
-        shell: pwsh
+        shell: powershell
         run: |
           "score=100" >> $env:GITHUB_OUTPUT
 
       - name: Read Output
-        shell: pwsh
+        shell: powershell
         run: |
           Write-Output "Score = ${{ steps.my_step.outputs.score }}"
 
       - name: Workflow Summary
-        shell: pwsh
+        shell: powershell
         run: |
           @"
           # Workflow Finished ✅
