@@ -28,33 +28,26 @@ jobs:
         run: echo "The string ends with 'ld'."
 
       - name: Format and echo string
-        run: echo "${{ format('Hello {0} {1} {2}', 'Mona', 'the', 'Octocat') }}"
+        run: |
+           echo "${{ format('Hello {0} {1} {2}', 'Mona', 'the', 'Octocat') }}"
 
       - name: Join issue labels
         if: github.event_name == 'issues'
         run: |
-          echo "Issue labels: ${{ join(github.event.issue.labels.*.name, ', ') }}"
+           echo "Issue labels: ${{ join(github.event.issue.labels.*.name, ', ') }}"
 
       - name: Convert job context to JSON
         run: |
-          echo "Job context in JSON: ${{ toJSON(github.job) }}"
-
-      - name: Parse JSON number
-        run: |
-          echo "Parsed Number: ${{ fromJSON('123') }}"
-
-      - name: Parse JSON boolean
-        run: |
-          echo "Parsed Boolean: ${{ fromJSON('true') }}"
+           echo "Job context in JSON: ${{ toJSON(job) }}"
 
       - name: Hash files
         run: |
-          echo "Hash of files: ${{ hashFiles('**/package-lock.json', '**/Gemfile.lock') }}"
+           echo "Hash of files: ${{ hashFiles('**/package-lock.json', '**/Gemfile.lock') }}"
 
-      - name: The job has succeeded
+      - name: Success example
         if: success()
-        run: echo "Job succeeded"
+        run: echo "Job succeeded."
 
-      - name: The job has failed
+      - name: Failure example
         if: failure()
-        run: echo "Job failed"
+        run: echo "Job failed."
