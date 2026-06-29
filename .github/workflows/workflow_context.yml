@@ -1,0 +1,59 @@
+name: Workflow Context Demo
+
+on:
+  workflow_dispatch:
+
+env:
+  APP_NAME: MyApp
+
+jobs:
+  context-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Print GitHub Context
+        run: |
+          echo "===== GitHub Context ====="
+          echo "Repository : ${{ github.repository }}"
+          echo "Repository Owner : ${{ github.repository_owner }}"
+          echo "Actor : ${{ github.actor }}"
+          echo "Event : ${{ github.event_name }}"
+          echo "Workflow : ${{ github.workflow }}"
+          echo "Job : ${{ github.job }}"
+          echo "Ref : ${{ github.ref }}"
+          echo "Branch : ${{ github.ref_name }}"
+          echo "SHA : ${{ github.sha }}"
+
+      - name: Print Runner Context
+        run: |
+          echo "===== Runner Context ====="
+          echo "OS : ${{ runner.os }}"
+          echo "Architecture : ${{ runner.arch }}"
+          echo "Runner Name : ${{ runner.name }}"
+          echo "Temp : ${{ runner.temp }}"
+          echo "Workspace : ${{ runner.workspace }}"
+
+      - name: Print Environment Context
+        run: |
+          echo "===== Env Context ====="
+          echo "APP_NAME : ${{ env.APP_NAME }}"
+
+      - name: Print Job Context
+        run: |
+          echo "===== Job Context ====="
+          echo "Job Status : ${{ job.status }}"
+
+      - name: Print Entire GitHub Context
+        run: |
+          echo '${{ toJson(github) }}'
+
+      - name: Print Entire Runner Context
+        run: |
+          echo '${{ toJson(runner) }}'
+
+      - name: Print Entire Job Context
+        run: |
+          echo '${{ toJson(job) }}'
