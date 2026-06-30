@@ -8,8 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "name=hany from github actions" >> ${GITHUB_ENV}
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
       - run: echo "${name} from github actions"
