@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "name=hany from github actions" >> ${GITHUB_ENV}
-      - run: echo "${name} from github actions"
+      - run: echo "${name} "
