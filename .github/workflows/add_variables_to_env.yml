@@ -1,4 +1,4 @@
-name: Dependent Jobs Workflow
+name: add variables to env
 
 on:
   workflow_dispatch:
